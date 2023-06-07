@@ -7,6 +7,12 @@ namespace app\core;
  */
 class DB
 {
+
+	protected static $_params = [
+		'host' => "",
+		'user' => "",
+		'pwd' => ""
+	];
 	
 	public static function query($query)
 	{
@@ -19,8 +25,7 @@ class DB
 
 	private static function link()
 	{
-		// mysqli_report(MYSQLI_REPORT_ALL);
-		$mysqli = new \mysqli("localhost","finsus","T1_1nfr4_f1nsus");
+		$mysqli = new \mysqli(self::$_params['host'],self::$_params['user'],self::$_params['pwd']);
 
 		return $mysqli;
 	}
